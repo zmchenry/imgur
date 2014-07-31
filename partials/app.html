@@ -1,9 +1,12 @@
-
-
-<div class="container" ng-controller="GalleryCtrl as galleryCtrl">
-    <button ng-click="galleryCtrl.getGallery()"></button>
-    <div ng-repeat="image in images.data">
-        <p>{{image.title}}</p>
-        <img src="{{image.link}}">
+<div id="topbar">
+    <div class="header-center">
+        <div id="header-logo">
+            <a href="https://imgur.com" class="logo">
+                <span class="logo-icon"></span>
+            </a>
+        </div>
     </div>
+</div>
+<div class="platform container" ng-controller="GalleryCtrl as galleryCtrl">
+    <image-grid></image-grid>
 </div>
