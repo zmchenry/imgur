@@ -1,0 +1,9 @@
+
+
+<div class="container" ng-controller="GalleryCtrl as galleryCtrl">
+    <button ng-click="galleryCtrl.getGallery()"></button>
+    <div ng-repeat="image in images.data">
+        <p>{{image.title}}</p>
+        <img src="{{image.link}}">
+    </div>
+</div>
