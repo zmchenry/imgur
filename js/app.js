@@ -37,6 +37,10 @@ app.service("imageService", function($http, $q) {
 
 app.controller('GalleryCtrl', function($scope, imageService) {
     $scope.images = [];
+    $scope.searching = false;
+    $scope.signInDropdown = false;
+
+
     var numberOfRows = 10;
     var imgsPerRow = 5;
     $scope.getGallery = function() {
@@ -87,6 +91,34 @@ app.directive("imageGrid", function() {
     return {
         restrict: "E",
         templateUrl: "partials/image-grid.html"
+    };
+});
+
+app.directive("searchClosed", function() {
+    return {
+        restrict: "E",
+        templateUrl: "partials/search-closed.html"
+    };
+});
+
+app.directive("searchFocused", function() {
+    return {
+        restrict: "E",
+        templateUrl: "partials/search-focused.html"
+    };
+});
+
+app.directive("searchFooter", function() {
+    return {
+        restrict: "E",
+        templateUrl: "partials/search-footer.html"
+    };
+});
+
+app.directive("signinDropdown", function() {
+    return {
+        restrict: "E",
+        templateUrl: "partials/signin-dropdown.html"
     };
 });
 

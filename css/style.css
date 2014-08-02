@@ -1,6 +1,11 @@
 .image-grid {
     list-style: none;
 }
+
+::selection {
+    background: #85BF25;
+}
+
 body {
     font-size: 14px;
     font-family: Arial,sans-serif;
@@ -11,15 +16,15 @@ body {
     margin: 0;
 }
 
-li {
-  background-color: #181817;
-border: 2px solid #444442;
-display: inline-block;
-margin: 4px 2px;
-position: relative;
-width: 19%;
-height: 30%;
-line-height: 0;
+li.image {
+    background-color: #181817;
+    border: 2px solid #444442;
+    display: inline-block;
+    margin: 4px 2px;
+    position: relative;
+    width: 19%;
+    height: 30%;
+    line-height: 0;
 }
 
 .gallery-image {
@@ -38,9 +43,13 @@ line-height: 0;
     border-radius: 5px;
 }
 
-body, div {
+body, div, form, input {
     margin: 0;
     padding: 0;
+}
+
+div {
+    display: block;
 }
 
 #topbar {
@@ -65,12 +74,16 @@ body, div {
 }
 
 #header-logo  a.logo{
-    width: 80px;
+    width: 90px;
     height: 50px;
     margin: 0;
     float: left;
     background-color: transparent;
     padding: 0 7px;
+}
+
+#header-logo a.logo:hover {
+    background-color: #444442;
 }
 
 #topbar a, #topbar span {
@@ -94,4 +107,301 @@ a:link {
     position: relative;
     display: block;
     margin-top: 7px;
+}
+
+#main-nav {
+    float: left;
+}
+
+#topbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+ul, menu, dir {
+    webkit-padding-start: 0;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+li.random-button, li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+#topbar ul li {
+    float: left;
+    padding: 0;
+    position: relative;
+    --webkit-user-select: none;
+}
+
+#topbar li.random-button a {
+    padding: 10px 6px;
+}
+
+#topbar li a:hover, .search-container:hover {
+    background-color: #444442;
+}
+
+#topbar li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 10px;
+    display: block;
+    position: relative;
+}
+
+.random-button {
+    opacity: 0.9;
+}
+
+.random-icon {
+    background: url(https://s.imgur.com/images/site-sprite.png?1405116793) no-repeat scroll -223px -211px transparent;
+    width: 28px;
+    height: 26px;
+    cursor: pointer;
+}
+
+#secondary-nav {
+    float: right;
+    position: relative;
+}
+
+.user-nav {
+    float: left;
+}
+
+
+
+#topbar .search-container {
+    height: 50px;
+    width: 48px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#topbar .search-closed {
+    width: 110px;
+    overflow: hidden;
+    transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+}
+
+input {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+input, textarea, keygen, select, button {
+    margin: 0em;
+    font: -webkit-small-control;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+}
+
+input, input[type="password"], input[type="search"] {
+    -webkit-appearance: textfield;
+    padding: 1px;
+    background-color: white;
+    border: 2px inset;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    cursor: auto;
+}
+
+.search {
+    width: 288px;
+}
+
+input[type=text], input[type=password] {
+    background: #121211;
+    border: 1px solid #444442;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#topbar .search {
+    background-color: transparent;
+    font-size: .9em;
+    width: 390px;
+    height: 48px;
+    display: none;
+    border: 0 none;
+    margin: 0 0 0 10px;
+}
+
+#topbar .search-closed .search{
+    display: inline-block;
+    color: #ccc;
+}
+
+#topbar .search-icon-container {
+    width: 48px;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+#topbar .search-icon-container-icon {
+    opacity: .9;
+    padding: 16px 17px;
+    position: absolute;
+    top: 9px;
+    right: 12px;
+    background: url(//s.imgur.com/images/site-sprite.png?1405116793) no-repeat scroll -495px -249px;
+    -ms-filter: "alpha(Opacity=90)";
+}
+
+#topbar .search-focused, #topbar .search-focused:hover {
+    width: ;idth: 463px;
+    background-color: #232323;
+    transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+}
+
+#topbar .signin-dropdown {
+    position: absolute;
+    width: 385px;
+    font-size: 12px;
+    left: -245px;
+    z-index: 1000;
+    color: #121211;
+    font-weight: 400;
+}
+
+#content.outside {
+    position: relative;
+}
+
+
+
+#content {
+    clear: both;
+    width: 950px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-color: #2b2b2b;
+    padding: 25px;
+    margin: 10px auto 0;
+    min-height: 150px;
+    z-index: 0;
+}
+
+#content {
+    width: 475px;
+    min-height: inherit;
+    padding: 25px;
+}
+
+.outside {
+    margin-bottom: 20px!important;
+    background-color: transparent!important;
+    padding: 0!important;
+    width: 1000px!important;
+}
+
+.sentence-sorting, #edit-sentence {
+    width: 100%;
+    font-size: 22px;
+    padding: 15px 0 25px;
+    color: #fff;
+    line-height: 33px;
+    max-height: 60px;
+    position: relative;
+    text-align: center;
+}
+
+#section, #sort, #window {
+    display: inline-block;
+    background-color: transparent;
+    z-index: 3;
+    border-radius: 0;
+    padding: 0 4px 1px 3px;
+}
+
+.sorting-text-align {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.combobox {
+    padding: 7px;
+    cursor: pointer;
+    background-color: #181818;
+    font-size: 9pt;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+#section.combobox .selection, #sort .selection, #window .selection {
+    line-height: 33px;
+    margin: 0;
+    font-size: 22px;
+    position: relative;
+    padding: 0;
+    overflow: visible;
+    border-bottom: 3px solid #85bf25;
+    border-radius: 0;
+    background-color: transparent;
+    padding-right: 5px;
+}
+
+
+.combobox .selection {
+    margin: -7px;
+    padding: 6px 7px;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+#section .selection:before, #sort .selection:before, #window .selection:before {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    background: transparent;
+    bottom: 0;
+    top: auto;
+    z-index: 11;
+    right: 0;
+    border-left: 8px solid transparent;
+    border-bottom: 8px solid #85bf25;
+}
+
+#section .selection .name, #section:hover .selection .name, #section .option .item:hover .name {
+    max-width: 185px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
+
+span.name:hover{
+    color: #85BF25;
 }
