@@ -5,18 +5,10 @@ app.service("imageService", function($http, $q) {
         getGallery: getGallery
     });
 
-    function getGallery() {
+    function getGallery(pageNum) {
         var request = $http({
             method:"get",
-            url: "https://api.imgur.com/3/gallery/hot/viral/0"
-        });
-        return (request.then(handleSuccess, handleError));
-    }
-
-    function getAlbum(id) {
-        var request = $http({
-            method: "get",
-            url: ("https://api.imgur.com/3/gallery/album/" + id)
+            url: "https://api.imgur.com/3/gallery/hot/viral/" + pageNum
         });
         return (request.then(handleSuccess, handleError));
     }
@@ -40,8 +32,10 @@ app.controller('GalleryCtrl', function($scope, imageService) {
     $scope.searching = false;
     $scope.signInDropdown = false;
     $scope.infoShow = false;
+    $scope.imageLimit = 60;
+    $scope.pageNum = 0;
     $scope.getGallery = function() {
-        imageService.getGallery().then(function(images){
+        imageService.getGallery($scope.pageNum).then(function(images){
                                             applyRemoteData(images);
                                         },
                                         function() {
@@ -49,24 +43,43 @@ app.controller('GalleryCtrl', function($scope, imageService) {
                                         );
     };
 
-    function checkForAlbums() {
+    $scope.loadMore = function() {
+        if($scope.imageLimit + 60 >= $scope.images.data.length) {
+            $scope.pageNum++;
+            $scope.getGallery();
+        } else {
+            $scope.imageLimit += 60;
+        }
+    };
+
+    function checkForAlbums(start) {
         angular.forEach($scope.images.data, function(image) {
-            if(image.is_album) {
-                image.link = "http://i.imgur.com/" + image.cover + "b.jpg";
-            } else {
-                image.link = image.link.replace(image.id, image.id + "b");
+            if(!image.gallery_link) {
+                if(image.is_album) {
+                    image.gallery_link = "http://i.imgur.com/" + image.cover + "b.jpg";
+                } else {
+                    image.gallery_link = image.link.replace(image.id, image.id + "b");
+                }
             }
         });
     }
 
     function applyRemoteData(images) {
-        $scope.images = images;
-        checkForAlbums();
+        var albumCheckStart;
+        if(typeof($scope.images.data) === "undefined") {
+            albumCheckStart = 0;
+            $scope.images.data = images.data;
+            
+        } else {
+            albumCheckStart = $scope.images.data.length;
+            $scope.images.data = $scope.images.data.concat(images.data);
+        }
+        checkForAlbums(albumCheckStart);
         console.log($scope.images);
         console.log("Success");
     }
 
-    $scope.images = $scope.getGallery();
+    $scope.getGallery();
     console.log($scope.images);
 });
 
@@ -109,6 +122,24 @@ app.directive("sentenceSort", function() {
     return {
         restrict: "E",
         templateUrl: "partials/sentence-sorting.html"
+    };
+});
+
+app.directive("cards", function() {
+    return {
+        restrict: "E",
+        templateUrl: "partials/cards.html"
+    };
+});
+
+app.directive("whenScrolled", function() {
+    return function(scope, elm, attr) {
+        var raw = elm[0];
+        elm.bind("scroll", function() {
+            if(raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+                scope.$apply(attr.whenScrolled);
+            }
+        });
     };
 });
 

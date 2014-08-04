@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 
-<body ng-app="imgur">
-  <div ng-include="'partials/app.html'">
+<body ng-controller="GalleryCtrl as galleryCtrl" ng-app="imgur">
+  <div class="fixed" ng-include="'partials/app.html'" when-scrolled="loadMore()">
   </div>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>

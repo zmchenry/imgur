@@ -588,3 +588,40 @@ a:link, a:active, a:visited, a strong {
     color: #999;
     border-top: 1px solid #000;
 }
+
+.outside .posts .textbox {
+    line-height: 18px;
+}
+
+.textbox {
+    background-color: #181817;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.imagelist-loader {
+    max-width: 100%;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    --webkit-border-radius: 4px;
+    position: relative;
+}
+
+.small-margin-top {
+    margin-top: 5px;
+}
+
+.lineheight {
+    line-height: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.fixed {
+    height: 100%;
+    overflow: auto;
+}
