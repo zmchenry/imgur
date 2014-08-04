@@ -34,67 +34,39 @@
 
 
 <div id="content" class="outside main">
-    <div class="sentence-sorting">
-        <span class="before-text">
-            The
-
-        </span>
-        <div id="section" class="combobox front-page-section sorting-text-align" name="section">
-
-            <div class="selection">
-                <div data-type="base" value="hot">
-                    <span class="name">Most Viral</span>
-                </div>
-            </div>
-
-            <div class="options nano" style="display: none;">
-                <div class="item-overflow content" tabindex="0">
-                    <div class="item selected" value="hot">
-                        <div data-type="base" value="hot">
-                            <span class="name">Most Viral</span>
+    <sentence-sort></sentence-sort>
+    <div class="panel hidden" ng-controller="GalleryCtrl as galleryCtrl">
+        <div id="imageList" class="home-gallery">
+            <div class="posts br10 first-child">
+            <div class="outside-loader"></div>
+                <div class="cards">
+                    <div class="post" ng-repeat="image in images.data" ng-mouseenter="infoShow = true" ng-mouseleave="infoShow = false">
+                        <a class="image-list-link" href="{{image.link}}">
+                            <img src="{{image.link}}">
+                            <div class="point-info transition">
+                                <div class="arrows">
+                                    <div title="like" class="arrow up" type="image">
+                                        <span class="icon"></span>
+                                    </div>
+                                    <div title="dislike" class="arrow down" type="image">
+                                        <span class="icon"></span>
+                                    </div>
+                                </div>
+                                <div class="point-info-points" title="points">
+                                    <span class="points">{{image.score}}</span>
+                                    <span class="points-text">points</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div ng-show="infoShow" class="hover">
+                            <p>{{image.title}}<p>
+                            <div class="post-info">
+                                {{image.views}}
+                            </div>
                         </div>
                     </div>
-                    <div class="item" value="new">
-                        <div data-type="base" value="new">
-                            <span class="name">User Submitted</span>
-                        </div>
-                    </div>
-                    <div class="user-group-divider"></div>
                 </div>
-                <div class="pane" style="display: none; opacity: 1; visibility: visible;"><div class="slider" style="height: 153px;"></div></div></div>
-                <input type="hidden" name="section" value="hot">
             </div>
-
-            <span class="middle-text"> <!-- intentionally not closed -->
-
-            images on the Internet, 
-
-
-
-            sorted by</span> <!-- .middle-text -->
-            <div id="sort" class="combobox">
-                <div class="selection">popularity</div>
-                <div class="options sorting-text-align" style="display: none;">
-                    <div class="item selected" value="viral">popularity</div>
-                    <div class="item" value="time">newest first</div>
-                    <div class="item" value="top">highest scoring</div>
-                </div>
-                <input type="hidden" name="sort" value="viral">
-            </div>
-
-
-
-            <div class="sort-options">
-                <ul>
-                    <li><a href="/gallery/random" id="random-button" class="title-n" original-title="random mode"><span></span></a></li>
-                    <li><a href="javascript:void(0)" id="past-link" class="title-n" original-title="past images"><span></span></a></li>
-                </ul>
-            </div>
-
-            <div id="user-gallery-message"><div data-reactid=".1"></div></div>
-            
-        </div>
-        <div class="platform container" ng-controller="GalleryCtrl as galleryCtrl">
-            <image-grid></image-grid>
         </div>
     </div>
+</div>

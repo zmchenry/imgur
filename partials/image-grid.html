@@ -1,5 +1,7 @@
-<ul class="row image-grid" ng-repeat="image_row in images">
-    <li class="image" ng-repeat="i in image_row">
-    <a href="{{i.link}}"><img class="gallery-image" src="{{i.link}}"></a>
-    </li>
-</ul>
+<div class="row image-grid" ng-repeat="image_row in images">
+    <div class="post image" ng-repeat="i in image_row">
+        <a class="image-list-link" href="{{i.link}}">
+            <img class="gallery-image" src="{{i.link}}">
+        </a>
+    </div>
+</div>

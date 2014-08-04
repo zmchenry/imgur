@@ -39,10 +39,7 @@ app.controller('GalleryCtrl', function($scope, imageService) {
     $scope.images = [];
     $scope.searching = false;
     $scope.signInDropdown = false;
-
-
-    var numberOfRows = 10;
-    var imgsPerRow = 5;
+    $scope.infoShow = false;
     $scope.getGallery = function() {
         imageService.getGallery().then(function(images){
                                             applyRemoteData(images);
@@ -55,9 +52,9 @@ app.controller('GalleryCtrl', function($scope, imageService) {
     function checkForAlbums() {
         angular.forEach($scope.images.data, function(image) {
             if(image.is_album) {
-                image.link = "http://i.imgur.com/" + image.cover + "m.jpg";
+                image.link = "http://i.imgur.com/" + image.cover + "b.jpg";
             } else {
-                image.link = image.link.replace(image.id, image.id + "m");
+                image.link = image.link.replace(image.id, image.id + "b");
             }
         });
     }
@@ -65,22 +62,8 @@ app.controller('GalleryCtrl', function($scope, imageService) {
     function applyRemoteData(images) {
         $scope.images = images;
         checkForAlbums();
-        rowify(numberOfRows, imgsPerRow);
         console.log($scope.images);
         console.log("Success");
-    }
-
-    function rowify(rows, iPerRow) {
-        var images = [];
-        var cnt = 0;
-        for(var i = 0; i < rows; i++) {
-            var image_row = [];
-            for(var j = 0; j < iPerRow; j++) {
-                image_row.push($scope.images.data[cnt++]);
-            }
-            images.push(image_row);
-        }
-        $scope.images = images;
     }
 
     $scope.images = $scope.getGallery();
@@ -122,4 +105,10 @@ app.directive("signinDropdown", function() {
     };
 });
 
+app.directive("sentenceSort", function() {
+    return {
+        restrict: "E",
+        templateUrl: "partials/sentence-sorting.html"
+    };
+});
 

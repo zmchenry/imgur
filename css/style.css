@@ -1,9 +1,14 @@
+
 .image-grid {
     list-style: none;
 }
 
 ::selection {
     background: #85BF25;
+}
+
+fieldset, img {
+    border: 0;
 }
 
 body {
@@ -46,10 +51,6 @@ li.image {
 body, div, form, input {
     margin: 0;
     padding: 0;
-}
-
-div {
-    display: block;
 }
 
 #topbar {
@@ -113,8 +114,11 @@ a:link {
     float: left;
 }
 
-#topbar ul {
+ul {
     list-style: none;
+}
+
+#topbar ul {
     margin: 0;
     padding: 0;
     position: relative;
@@ -404,4 +408,183 @@ input[type=text], input[type=password] {
 
 span.name:hover{
     color: #85BF25;
+}
+
+#content.outside .panel {
+    padding: 0;
+    background-color: transparent;
+}
+
+.main .panel #imagelist.home-gallery {
+    width: 606px;
+}
+
+.outside #imagelist, 
+.main .panel.hidden #imagelist,
+.main .panel #extended-imagelist, 
+.main .panel.hidden #imagelist.home-gallery, 
+.full-width.main .panel #imagelist {
+    width: 100%;
+    display: inline-block;
+}
+
+.panel {
+    background-color: #2b2b2b;
+    padding: 25px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+#content.outside .panel>div {
+    vertical-align: top;
+}
+
+.main .panel #imagelist {
+    width: 800px;
+    right: auto;
+    left: 0;
+    position: relative;
+    z-index: 2;
+    transition: all .15s ease-in-out;
+    -moz-transition: all .15s ease-in-out;
+    -webkit-transition: all .15s ease-in-out;
+}
+
+.hidden .posts, .full-width .posts {
+    padding: 22px;
+}
+
+.outside .posts {
+    line-height: 0;
+}
+
+.posts {
+    position: relative;
+    padding: 17px;
+    background-color: #2b2b2b;
+    box-shadow: 0 0 11px 1px #111;
+    -webkit-box-shadow: 0 0 11px 1px #111;
+    -moz-box-shadow: 0 0 11px 1px #111;
+    margin-bottom: 50px;
+}
+
+.br10 {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.outside-loader {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://s.imgur.com/images/loaders/ddddd1_181817/48.gif) 364px 80px no-repeat #181817;
+    border-radius: 4px;
+    opacity: .8;
+    position: absolute;
+    z-index: 1;
+    display: none;
+}
+
+.post, .post img, .post.empty {
+    width: 180px;
+    height: 180px;
+    line-height: 0;
+}
+
+.post {
+    background-color: #181817;
+    border: 2px solid #444442;
+    display: inline-block;
+    margin: 4px 2px;
+    position: relative;
+}
+
+.post a.image-list-link {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.post .hover, .post a.image-list-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+a:link, a:active, a:visited, a strong {
+    color: #4E76C9;
+    text-decoration: none;
+}
+
+.post img {
+    outline: 1px solid #121211;
+    outline-offset: -1px;
+}
+
+.transition {
+    transition: all .07s ease-in-out;
+    -webkit-transition: all .07s ease-in-out;
+    -moz-transition: all .07s ease-in-out;
+}
+
+.post .point-info, .post .post-info {
+    width: 100%;
+}
+
+.post .point-info {
+    background-color: #000;
+    background-color: rgba(0,0,0,.7);
+    border-top: 1px solid #000;
+    bottom: -18%;
+    position: absolute;
+}
+
+.post .point-info .point-info-points {
+    position: relative;
+    bottom: -14px;
+    left: 5px;
+    color: #fff;
+    color: rgba(255,255,255,.8);
+}
+
+.post .hover {
+    padding: 7%;
+    width: 120%;
+    z-index: 2;
+    background-color: #121211;
+    border: 2px solid #444442;
+    top: 101%;
+    margin-left: -19%;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -webkit-box-shadow: 0 2px 5px #000;
+    -moz-box-shadow: 0 2px 5px #000;
+    box-shadow: 0 2px 5px #000;
+    text-align: left;
+}
+
+.post p {
+    line-height: 1.5em;
+    color: #fff;
+    max-height: 11em;
+    overflow: hidden;
+    padding: 0;
+    letter-spacing: .03em;
+    margin-bottom: 27px;
+}
+
+.post .post-info {
+    background-color: #232323;
+    padding: 7%;
+    position: absolute;
+    width: 87.5%;
+    bottom: 0;
+    left: 0;
+    color: #999;
+    border-top: 1px solid #000;
 }
