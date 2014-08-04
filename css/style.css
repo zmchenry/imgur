@@ -453,7 +453,7 @@ span.name:hover{
 }
 
 .hidden .posts, .full-width .posts {
-    padding: 22px;
+    padding: 29px;
 }
 
 .outside .posts {
@@ -565,7 +565,7 @@ a:link, a:active, a:visited, a strong {
     -webkit-box-shadow: 0 2px 5px #000;
     -moz-box-shadow: 0 2px 5px #000;
     box-shadow: 0 2px 5px #000;
-    text-align: left;
+    text-align: center;
 }
 
 .post p {
@@ -580,7 +580,7 @@ a:link, a:active, a:visited, a strong {
 
 .post .post-info {
     background-color: #232323;
-    padding: 7%;
+    padding: 7% 2% 7% 11%;
     position: absolute;
     width: 87.5%;
     bottom: 0;

@@ -1,7 +1,32 @@
-<div class="row image-grid" ng-repeat="image_row in images">
-    <div class="post image" ng-repeat="i in image_row">
-        <a class="image-list-link" href="{{i.link}}">
-            <img class="gallery-image" src="{{i.link}}">
-        </a>
+<div id="imageList" class="home-gallery">
+    <div class="posts br10 first-child">
+        <div class="outside-loader"></div>
+        <div class="cards">
+            <div class="post" ng-repeat="image in images.data" ng-mouseenter="infoShow = true" ng-mouseleave="infoShow = false">
+                <a class="image-list-link" href="{{image.link}}">
+                    <img src="{{image.link}}">
+                    <div ng-show="infoShow"class="point-info transition">
+                        <div class="arrows">
+                            <div title="like" class="arrow up" type="image">
+                                <span class="icon"></span>
+                            </div>
+                            <div title="dislike" class="arrow down" type="image">
+                                <span class="icon"></span>
+                            </div>
+                        </div>
+                        <div class="point-info-points" title="points">
+                            <span class="points">{{image.score}}</span>
+                            <span class="points-text">points</span>
+                        </div>
+                    </div>
+                </a>
+                <div ng-show="infoShow" class="hover">
+                    <p>{{image.title}}<p>
+                        <div class="post-info">
+                            {{image.views}} views
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
