@@ -9,7 +9,7 @@
 </head>
 
 <body ng-controller="GalleryCtrl as galleryCtrl" ng-app="imgur">
-  <div class="fixed" ng-include="'partials/app.html'" when-scrolled="loadMore()">
+  <div class="fixed" ng-include="'partials/app.html'" scroll-load="loadMore()">
   </div>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
