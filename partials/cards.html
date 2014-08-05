@@ -1,6 +1,6 @@
 <div class="outside-loader"></div>
 <div class="cards">
-    <div class="post" ng-repeat="image in images.data | limitTo: imageLimit" ng-mouseenter="infoShow = true" ng-mouseleave="infoShow = false">
+    <div class="post" ng-repeat="image in images.data track by $index | limitTo: imageLimit" ng-mouseenter="infoShow = true" ng-mouseleave="infoShow = false">
         <a class="image-list-link" href="{{image.link}}">
             <img ng-src="{{image.gallery_link}}">
             <div ng-show="infoShow"class="point-info transition">

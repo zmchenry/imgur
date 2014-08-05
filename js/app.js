@@ -1,10 +1,7 @@
+/*global angular:true, console:true*/
+
 var app = angular.module('imgur', []);
 app.service("imageService", function($http, $q) {
-    
-    return ({
-        getGallery: getGallery
-    });
-
     function getGallery(pageNum) {
         var request = $http({
             method:"get",
@@ -24,6 +21,10 @@ app.service("imageService", function($http, $q) {
 
         return $q.reject( response.data.message);
     }
+
+    return ({
+        getGallery: getGallery
+    });
 });
 
 
@@ -52,9 +53,10 @@ app.controller('GalleryCtrl', function($scope, imageService) {
         }
     };
 
-    function checkForAlbums(start) {
+    function checkForAlbums() {
         angular.forEach($scope.images.data, function(image) {
-            if(!image.gallery_link) {
+            console.log(image.gallery_link);
+            if(typeof image.gallery_link === 'undefined' && !image.gallery_link) {
                 if(image.is_album) {
                     image.gallery_link = "http://i.imgur.com/" + image.cover + "b.jpg";
                 } else {
@@ -75,12 +77,10 @@ app.controller('GalleryCtrl', function($scope, imageService) {
             $scope.images.data = $scope.images.data.concat(images.data);
         }
         checkForAlbums(albumCheckStart);
-        console.log($scope.images);
         console.log("Success");
     }
 
     $scope.getGallery();
-    console.log($scope.images);
 });
 
 app.directive("imageGrid", function() {
@@ -136,7 +136,7 @@ app.directive("whenScrolled", function() {
     return function(scope, elm, attr) {
         var raw = elm[0];
         elm.bind("scroll", function() {
-            if(raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+            if(raw.scrollTop + raw.offsetHeight >= raw.scrollHeight - 100) {
                 scope.$apply(attr.whenScrolled);
             }
         });
