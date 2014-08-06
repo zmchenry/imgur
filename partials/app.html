@@ -17,12 +17,12 @@
         <div id="secondary-nav">
             <ul class="user-nav">
                 <li id="global-search-container">
-                    <search-closed ng-show="!searching" ng-click="searching = !searching"></search-closed>
-                    <search-focused ng-show="searching" ng-click="searching = !searching"></search-focused>
+                    <search-closed ng-show="!galleryCtrl.searching" ng-click="galleryCtrl.searching = !galleryCtrl.searching"></search-closed>
+                    <search-focused ng-show="galleryCtrl.searching" ng-click="galleryCtrl.searching = !galleryCtrl.searching"></search-focused>
                 </li>
                 <li class="signin-link">
                     <a class="" href="https://imgur.com/signin">sign in</a>
-                    <signin-dropdown ng-show="signInDropdown" ng-click="!signInDropdown"></signin-dropdown>
+                    <signin-dropdown ng-show="galleryCtrl.signInDropdown" ng-click="!galleryCtrl.signInDropdown"></signin-dropdown>
                 </li>
                 <li>
                     <a class="" href="https://imgur.com/register">register</a>

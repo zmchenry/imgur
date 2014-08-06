@@ -28,34 +28,38 @@ app.service("imageService", function($http, $q) {
 });
 
 
-app.controller('GalleryCtrl', function($scope, imageService) {
-    $scope.images = [];
-    $scope.searching = false;
-    $scope.signInDropdown = false;
-    $scope.infoShow = false;
-    $scope.imageLimit = 0;
-    $scope.pageNum = 0;
-    $scope.getGallery = function() {
-        imageService.getGallery($scope.pageNum).then(function(images){
+app.controller('GalleryCtrl', function(imageService) {
+    var context = this;
+    this.images = [];
+    this.searching = false;
+    this.signInDropdown = false;
+    this.infoShow = false;
+    this.imageLimit = 0;
+    this.pageNum = 0;
+    
+    this.getGallery = function() {
+        imageService.getGallery(context.pageNum).then(function(images){
                                             applyRemoteData(images);
                                         },
                                         function() {
-                                            $scope.imageLimit = $scope.images.length;
-                                            $scope.pageNum = 10;
+                                            context.imageLimit = context.images.length;
+                                            context.pageNum = 10;
                                             console.log("Failure getting gallery");}
                                         );
     };
 
-    $scope.loadMore = function() {
-        if($scope.imageLimit + 60 >= $scope.images.data.length) {
-            $scope.pageNum++;
-            $scope.getGallery();
+    this.loadMore = function() {
+        if(context.pageNum < 10) {
+            if(context.imageLimit + 60 >= context.images.data.length) {
+                context.pageNum++;
+                this.getGallery();
+            }
+            context.imageLimit += 60;
         }
-        $scope.imageLimit += 60;
     };
 
     function checkForAlbums() {
-        angular.forEach($scope.images.data, function(image) {
+        angular.forEach(context.images.data, function(image) {
             if(image && typeof image.gallery_link === 'undefined' && !image.gallery_link) {
                 if(image.is_album) {
                     image.gallery_link = "http://i.imgur.com/" + image.cover + "b.jpg";
@@ -68,19 +72,19 @@ app.controller('GalleryCtrl', function($scope, imageService) {
 
     function applyRemoteData(images) {
         var albumCheckStart;
-        if(typeof($scope.images.data) === "undefined") {
+        if(typeof(context.images.data) === "undefined") {
             albumCheckStart = 0;
-            $scope.images.data = images.data;
+            context.images.data = images.data;
             
         } else {
-            albumCheckStart = $scope.images.data.length;
-            $scope.images.data = $scope.images.data.concat(images.data);
+            albumCheckStart = context.images.data.length;
+            context.images.data = context.images.data.concat(images.data);
         }
         checkForAlbums(albumCheckStart);
         console.log("Success");
     }
 
-    $scope.getGallery();
+    this.getGallery();
 });
 
 app.directive("imageGrid", function() {
