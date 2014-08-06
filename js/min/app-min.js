@@ -35,6 +35,7 @@ app.controller('GalleryCtrl', function(imageService) {
     this.signInDropdown = false;
     this.infoShow = false;
     this.imageLimit = 0;
+    this.outOfImages = false;
     this.pageNum = 0;
     
     this.getGallery = function() {
@@ -44,6 +45,7 @@ app.controller('GalleryCtrl', function(imageService) {
                                         function() {
                                             context.imageLimit = context.images.length;
                                             context.pageNum = 10;
+                                            context.outOfImages = true;
                                             console.log("Failure getting gallery");}
                                         );
     };
@@ -140,7 +142,7 @@ app.directive("scrollLoad", function() {
     return function(scope, elm, attr) {
         var raw = elm[0];
         elm.bind("scroll", function() {
-            if(raw.scrollTop + raw.offsetHeight >= raw.scrollHeight - 100) {
+            if(raw.scrollTop + raw.offsetHeight >= raw.scrollHeight - 10) {
                 scope.$apply(attr.scrollLoad);
             }
         });
