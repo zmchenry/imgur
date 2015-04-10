@@ -1,0 +1,28 @@
+<div class="outside-loader"></div>
+<div class="cards">
+    <div class="post" ng-repeat="image in galleryCtrl.images.data track by $index | limitTo: galleryCtrl.imageLimit" ng-mouseenter="image.infoShow = true" ng-mouseleave="image.infoShow = false">
+        <a class="image-list-link" href="{{image.link}}">
+            <img ng-src="{{image.gallery_link}}">
+            <div ng-show="galleryCtrl.infoShow"class="point-info transition">
+                <div class="arrows">
+                    <div title="like" class="arrow up" type="image">
+                        <span class="icon"></span>
+                    </div>
+                    <div title="dislike" class="arrow down" type="image">
+                        <span class="icon"></span>
+                    </div>
+                </div>
+                <div class="point-info-points" title="points">
+                    <span class="points">{{image.score}}</span>
+                    <span class="points-text">points</span>
+                </div>
+            </div>
+        </a>
+        <div ng-show="image.infoShow" class="hover">
+            <p>{{image.title}}<p>
+            <div class="post-info">
+                {{image.views}} views
+            </div>
+        </div>
+    </div>
+</div>

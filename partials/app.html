@@ -1,0 +1,41 @@
+<div id="topbar">
+    <div class="header-center">
+        <div id="header-logo">
+            <a href="https://imgur.com" class="logo">
+                <span class="logo-icon"></span>
+            </a>
+        </div>
+        <div id="main-nav">
+            <ul>
+                <li class="random-button">
+                    <a href="">
+                        <div class="random-icon"></div>
+                    </a>
+                </li>                
+            </ul>
+        </div>
+        <div id="secondary-nav">
+            <ul class="user-nav">
+                <li id="global-search-container">
+                    <search-closed ng-show="!galleryCtrl.searching" ng-click="galleryCtrl.searching = !galleryCtrl.searching"></search-closed>
+                    <search-focused ng-show="galleryCtrl.searching" ng-click="galleryCtrl.searching = !galleryCtrl.searching"></search-focused>
+                </li>
+                <li class="signin-link">
+                    <a class="" href="https://imgur.com/signin">sign in</a>
+                    <signin-dropdown ng-show="galleryCtrl.signInDropdown" ng-click="!galleryCtrl.signInDropdown"></signin-dropdown>
+                </li>
+                <li>
+                    <a class="" href="https://imgur.com/register">register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div id="content" class="outside main">
+    <sentence-sort></sentence-sort>
+    <div class="panel hidden">
+        <image-grid></image-grid>
+    </div>
+</div>
